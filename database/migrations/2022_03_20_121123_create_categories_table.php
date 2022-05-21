@@ -15,7 +15,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('title_ar')->nullable();
+            $table->string('title_en')->nullable();
             $table->string('image')->nullable();
             $table->string('level')->default(1)
                 ->comment('1 الاقسام الرئيسية و 2 الاقسام الفرعية')->nullable();

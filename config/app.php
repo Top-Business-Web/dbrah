@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Cairo',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,9 @@ return [
         ///=============== custom ===========
        Yoeunes\Toastr\ToastrServiceProvider::class,
         A6digital\Image\DefaultProfileImageServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Buglinjo\LaravelWebp\WebpServiceProvider::class,
 
     ],
 
@@ -233,6 +236,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Webp' => Buglinjo\LaravelWebp\Facades\Webp::class,
 
     ],
 

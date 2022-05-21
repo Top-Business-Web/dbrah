@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('main_image')->nullable();
             $table->text('images')->nullable();
-            $table->string('title')->nullable();
+            $table->string('title_ar')->nullable();
+            $table->string('title_en')->nullable();
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')
@@ -27,7 +28,8 @@ class CreateProductsTable extends Migration
             $table->foreign('sub_category_id')->references('id')
                 ->on('categories')->onDelete('cascade');
 
-            $table->text('details')->nullable();
+            $table->text('details_ar')->nullable();
+            $table->text('details_en')->nullable();
 
             $table->timestamps();
         });

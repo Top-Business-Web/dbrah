@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/login');
+});
+
+Route::get('webView',function(Request $request){
+    $validate = Validator::make($request->all(),[
+        'type'=>'required|in:terms,privacy'
+    ]);
+
+    if ($validate->fails()){
+        return 'type is missing';
+    }
+
+    $type = $request->type;
+    $text = \App\Models\Setting::first("$request->type");
+    $text = $text->$type;
+    return view('webView',compact('text'));
 });

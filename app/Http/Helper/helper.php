@@ -22,6 +22,11 @@ if (!function_exists('loggedAdmin')) {
     }
 }
 
+if (!function_exists('provider')) {
+    function provider(){
+        return auth()->guard('provider');
+    }
+}
 if (!function_exists('user')) {
     function user() {
         return auth()->guard('user');
@@ -802,6 +807,34 @@ function get_font_icons(){
 }
 
 
+if (!function_exists('get_client_file')) {
+    function get_client_file($image) {
+        if ($image!= null){
+            if (!file_exists($image)){
+                return asset('assets/uploads/avatar2.png');
+            }else{
+                return asset($image);
+            }
+        }else{
+            return asset('assets/uploads/avatar2.png');
+        }
+    }
+}
+
+if (!function_exists('get_user_file')) {
+    function get_user_file($image) {
+        if ($image!= null){
+            if (!file_exists($image)){
+                return asset('assets/uploads/avatar.png');
+            }else{
+                return asset($image);
+            }
+        }else{
+            return asset('assets/uploads/avatar.png');
+        }
+    }
+}
+
 
 if (!function_exists('get_file')) {
     function get_file($image) {
@@ -815,9 +848,25 @@ if (!function_exists('get_file')) {
         }else{
             return asset('assets/default/img/empty.png');
         }
-        return $image!=null?asset($image):asset('assets/default/img/empty.png');
     }
 }
+
+if (!function_exists('get_representative_image')) {
+    function get_representative_image($image) {
+
+        if ($image!= null){
+            if (!file_exists($image)){
+                return asset('assets/default/img/rev.png');
+            }else{
+                return asset($image);
+            }
+        }else{
+            return asset('assets/default/img/rev.png');
+        }
+    }
+}
+
+
 
 if (!function_exists('api')) {
     function api() {
