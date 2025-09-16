@@ -15,7 +15,7 @@ trait GeneralTrait
             'data' => null,
             'msg' => $msg,
             'status' => $status,
-        ],200);
+        ],400);
     }
 
 
@@ -39,7 +39,7 @@ trait GeneralTrait
 
 
 
-    public function returnValidationError($code = "E001", $validator,$status=200)
+    public function returnValidationError($code = "E001", $validator,$status=400)
     {
         return $this->returnError($code, $validator->errors()->first(),$status);
     }

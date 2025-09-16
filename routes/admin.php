@@ -26,6 +26,14 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
         Route::post('delete', 'ContactUsController@delete')->name('delete_contact');
     });
 
+        #### Settings ###
+    Route::group(['prefix' => 'settings'], function () {
+        // Route::get('/', 'SettingsController@index')->name('settings.index');
+        Route::resource('deliveryTimes', 'DeliveryTimeController');
+        Route::POST('deliveryTimes.delete','DeliveryTimeController@delete')->name('deliveryTimes.delete');
+        // Route::post('delete', 'SettingsController@delete')->name('delete_settings');
+    });
+
     #### suggestions ###
     Route::group(['prefix' => 'suggestions'], function () {
         Route::get('/', 'SuggestionController@index')->name('suggestion.index');

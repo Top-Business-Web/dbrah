@@ -19,6 +19,7 @@ class AuthController extends Controller
     use GeneralTrait,PhotoTrait;
     public function login(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'phone' => 'required|exists:users,phone',
             'phone_code' => 'required|exists:users,phone_code',

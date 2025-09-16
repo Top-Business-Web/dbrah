@@ -86,7 +86,17 @@
                 <span class="side-menu__label">رسائل العملاء</span>
             </a>
         </li>
-
+        <li class="slide">
+            <a class="side-menu__item" data-toggle="slide" href="#">
+                <i class="icon icon-basket-loaded side-menu__icon"></i>
+                <span class="side-menu__label">الإعدادات</span><i class="angle fa fa-angle-left"></i>
+            </a>
+            <ul class="slide-menu">
+                <li><a href="{{route('deliveryTimes.index')}}" class="slide-item" style="font-size: 14px">أوقات التوصيل</a></li>
+                {{-- <li><a href="{{route('currentOrders')}}" class="slide-item" style="font-size: 14px">الطلبات الحالية</a></li> --}}
+                {{-- <li><a href="{{route('endedOrders')}}" class="slide-item" style="font-size: 14px">الطلبات السابقة</a></li> --}}
+            </ul>
+        </li>
         <li class="slide">
             <a class="side-menu__item" href="{{route('admin.logout')}}">
                 <i class="icon icon-lock side-menu__icon"></i>

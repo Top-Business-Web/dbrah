@@ -48,7 +48,7 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label class="form-label">وصف المنتج (ar)</label>
-                <textarea rows="3" name="details_at" id="details_at" class="form-control"></textarea>
+                <textarea rows="3" name="details_ar" id="details_at" class="form-control"></textarea>
             </div>
         </div>
 

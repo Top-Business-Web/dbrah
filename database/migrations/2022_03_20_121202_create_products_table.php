@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->foreign('sub_category_id')->references('id')
                 ->on('categories')->onDelete('cascade');
 
-            $table->text('details_ar')->nullable();
+            $table->text(column: 'details_ar')->nullable();
             $table->text('details_en')->nullable();
 
             $table->timestamps();

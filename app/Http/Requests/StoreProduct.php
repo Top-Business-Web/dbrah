@@ -28,7 +28,7 @@ class StoreProduct extends FormRequest
             'title_en'        => 'required|max:255',
             'category_id'     => 'required|exists:categories,id',
             'sub_category_id' => 'required|exists:categories,id',
-            'details_at'      => 'required',
+            'details_ar'      => 'required',
             'details_en'      => 'required',
             'main_image'      => 'required_without:id|mimes:jpeg,jpg,png,gif,webp',
         ];
@@ -43,7 +43,7 @@ class StoreProduct extends FormRequest
             'title_en.required'           => 'يرجي ادخال عنوان المنتج باللغة الانجليزية',
             'category_id.required'        => 'يرجي اختيار التصنيف الرئيسي للمنتج',
             'sub_category_id.required'    => 'يرجي اختيار التصنيف الفرعي للمنتج',
-            'details_at.required'         => 'يرجي كتابة وصف المنتج باللغة العربية',
+            'details_ar.required'         => 'يرجي كتابة وصف المنتج باللغة العربية',
             'details_en.required'         => 'يرجي كتابة وصف المنتج باللغة الانجليزية',
         ];
     }
