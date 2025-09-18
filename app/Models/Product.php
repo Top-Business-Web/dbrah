@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
-    protected $appends=['is_list'];
+    protected $appends = ['is_list'];
 
     ##  Mutators and Accessors
     public function getImagesAttribute()
@@ -25,15 +25,11 @@ class Product extends Model
     public function getIsListAttribute()
     {
 
-        if(request()->has('user_id'))
-        {
-            $count = MyList::where('user_id',request()->user_id)->where('product_id',$this->id)->count();
-            if ($count > 0)
-            {
+        if (request()->has('user_id')) {
+            $count = MyList::where('user_id', request()->user_id)->where('product_id', $this->id)->count();
+            if ($count > 0) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
@@ -43,22 +39,25 @@ class Product extends Model
 
 
     ## Relations
-    public function mainCategory(){
-        return $this->belongsTo(Category::class,'category_id');
+    public function mainCategory()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function subCategory(){
-        return $this->belongsTo(Category::class,'sub_category_id');
+    public function subCategory()
+    {
+        return $this->belongsTo(Category::class, 'sub_category_id');
     }
 
-    public function images(){
-        return $this->hasMany(ProductImages::class,'product_id');
+    public function images()
+    {
+        return $this->hasMany(ProductImages::class, 'product_id');
     }
 
 
     ///// mohamed gamal
     public function list()
     {
-        return $this->hasMany(MyList::class,'product_id');
-    }//end fun
-}//end class
+        return $this->hasMany(MyList::class, 'product_id');
+    }
+}
