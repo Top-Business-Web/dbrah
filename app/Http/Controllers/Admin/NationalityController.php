@@ -17,9 +17,9 @@ class NationalityController extends Controller
     public function index(request $request)
     {
         // dd(DeliveryTime::latest()->get());
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $nationalities = Nationality::latest()->get();
-            return Datatables::of( $nationalities)
+            return Datatables::of($nationalities)
                 ->addColumn('action', function ($nationalities) {
                     return '
                             <button type="button" data-id="' . $nationalities->id . '" class="btn btn-pill btn-info-light editBtn"><i class="fa fa-edit"></i></button>
@@ -29,103 +29,94 @@ class NationalityController extends Controller
                             </button>
                        ';
                 })
-//                 ->editColumn('facebook', function ($nationalities) {
-// //                    if ($teams->facebook != null){
-//                         return '
-//                     <div class="wideget-user-icons mb-4">
-// 						<a href="'.$nationalities->facebook.'" class="bg-facebook text-white btn btn-circle"><i class="fab fa-facebook"></i></a>
-// 						<a href="'.$nationalities->twitter.'" class="bg-info text-white btn btn-circle"><i class="fab fa-twitter"></i></a>
-// 						<a href="'.$nationalities->gmail.'" class="bg-google text-white btn btn-circle"><i class="fab fa-google"></i></a>
-// 					</div>
-//                     ';
-// //                    }
-//                 })
+                ->editColumn('image', function ($nationalities) {
+                    return '
+                    <img alt="image" onclick="window.open(this.src)" class="avatar-md rounded-circle" src="' . $nationalities->image . '">
+                    ';
+                })
                 ->escapeColumns([])
                 ->make(true);
-        }else{
+        } else {
             return view('admin.nationalities.index');
         }
     }
 
 
 
-    public function create(){
+    public function create()
+    {
         return view('admin.nationalities.parts.create');
     }
 
     public function store(request $request): \Illuminate\Http\JsonResponse
     {
+
         $inputs = $request->validate([
             'title_ar'   => 'required',
             'title_en'   => 'required',
             'image'   => 'required',
-        ],[
+        ], [
             'title_ar.required' => 'الاسم بالعربيه مطلوب',
             'title_en.required' => 'الاسم بالانجليزيه مطلوب',
             'image.required' => 'الصوره مطلوبه',
         ]);
-//        dd($inputs);;
-        if($request->has('image')){
-            $file_name = $this->saveImage($request->image,'assets/uploads/admins');
-            $inputs['image'] = 'assets/uploads/admins/'.$file_name;
+
+        if ($request->has(key: 'image')) {
+            $file_name = $this->saveImage($request->image, 'assets/uploads/nationalities');
+            $inputs['image'] = 'assets/uploads/nationalities/' . $file_name;
         }
-//       $from = Carbon::parse($request->from)->getTimestamp() * 1000;
-//       $to = Carbon::parse($request->to)->getTimestamp() * 1000;
 
 
-        if(Nationality::create([
-            'image'=>$inputs['image'],
-            'title_ar'=>$inputs['image'],
-            'title_en'=>$inputs['image'],
+        if (Nationality::create([
+            'image' => $inputs['image'],
+            'title_ar' => $inputs['title_ar'],
+            'title_en' => $inputs['title_en'],
         ]))
-            return response()->json(['status'=>200]);
+            return response()->json(['status' => 200]);
         else
-            return response()->json(['status'=>405]);
+            return response()->json(['status' => 405]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Nationality  $nationality
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Nationality $nationality)
     {
         //
     }
 
 
-    public function edit(Nationality $nationality){
-        return view('admin.nationalities.parts.edit',compact('nationality'));
+    public function edit(Nationality $nationality)
+    {
+        return view('admin.nationalities.parts.edit', compact(var_name: 'nationality'));
     }
 
 
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $inputs = $request->validate([
-            'id'         => 'required',
-            'photo'      => 'nullable|mimes:jpeg,jpg,png,gif',
-            'name'       => 'required|max:255',
-            'job'        => 'required|max:255',
-            'facebook'   => 'nullable|max:255',
-            'twitter'    => 'nullable|max:255',
-            'gmail'      => 'nullable|max:255',
+            'title_ar'   => 'required',
+            'title_en'   => 'required',
+            'photo'      => 'nullable|mimes:jpeg,jpg,png,gif,webp|image',
+        ], [
+            'title_ar.required' => 'الاسم بالعربيه مطلوب',
+            'title_en.required' => 'الاسم بالانجليزيه مطلوب',
+            'photo.mimes'       => 'صيغة الصورة غير مدعومة',
         ]);
-        $nationality = Nationality::findOrFail($request->id);
-        if($request->has('photo')){
-            if (file_exists($nationality->photo)) {
-                unlink($nationality->photo);
+
+        $nationality = Nationality::findOrFail($id);
+
+        if ($request->has(key: 'image')) {
+            if (file_exists($nationality->image)) {
+                unlink($nationality->image);
             }
-            $file_name = $this->saveImage($request->photo,'assets/uploads/teams');
-            $inputs['photo'] = 'assets/uploads/teams/'.$file_name;
+            $file_name = $this->saveImage($request->image, 'assets/uploads/nationalities');
+            $inputs['image'] = 'assets/uploads/nationalities/' . $file_name;
         }
         if ($nationality->update($inputs))
             return response()->json(['status' => 200]);
         else
             return response()->json(['status' => 405]);
     }
-
 
 
     public function delete(Request $request)
@@ -135,6 +126,6 @@ class NationalityController extends Controller
             unlink($nationality->photo);
         }
         $nationality->delete();
-        return response(['message'=>'تم الحذف بنجاح','status'=>200],200);
+        return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
     }
 }

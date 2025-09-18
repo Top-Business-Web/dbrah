@@ -26,10 +26,13 @@
                             <thead>
                                 <tr class="fw-bolder text-muted bg-light">
                                     <th class="min-w-25px">#</th>
-                                    <th class="min-w-20px">الصوره</th>
-                                    <th class="min-w-20px">العنوان بالعربي</th>
-                                    <th class="min-w-20px">العنوان بالانجليزي</th>
-                                    <th class="min-w-50px rounded-end">العمليات</th>
+                                    <th class="min-w-20px">الاسم</th>
+                                    <th class="min-w-20px"> الاسم المستعار </th>
+                                    <th class="min-w-20px"> الايميل </th>
+                                    <th class="min-w-20px"> الكود </th>
+                                    <th class="min-w-20px"> الهاتف </th>
+                                    <th class="min-w-20px"> الرقم الضريبي </th>
+                                    <th class="min-w-20px"> الصورة </th>
                                 </tr>
                             </thead>
                         </table>
@@ -91,25 +94,35 @@
                 name: 'id'
             },
             {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'fake_name',
+                name: 'fake_name'
+            },
+            {
+                data: 'email',
+                name: 'email'
+            },
+            {
+                data: 'phone_code',
+                name: 'phone_code'
+            },
+            {
+                data: 'phone',
+                name: 'phone'
+            },
+            {
+                data: 'vat_number',
+                name: 'vat_number'
+            },
+            {
                 data: 'image',
                 name: 'image'
-            },
-            {
-                data: 'title_ar',
-                name: 'title_ar'
-            },
-            {
-                data: 'title_en',
-                name: 'title_en'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            },
+            }
         ]
-        showData('{{ route('nationalities.index') }}', columns);
+        showData('{{ route('providers.index') }}', columns);
         // Delete Using Ajax
         deleteScript('{{ route('nationalities.delete') }}');
         // Add Using Ajax

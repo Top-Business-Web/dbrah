@@ -26,7 +26,7 @@
                             <thead>
                                 <tr class="fw-bolder text-muted bg-light">
                                     <th class="min-w-25px">#</th>
-                                    <th class="min-w-20px">الصوره</th>
+                                    <th class="min-w-25px">الدولة</th>
                                     <th class="min-w-20px">العنوان بالعربي</th>
                                     <th class="min-w-20px">العنوان بالانجليزي</th>
                                     <th class="min-w-50px rounded-end">العمليات</th>
@@ -91,8 +91,8 @@
                 name: 'id'
             },
             {
-                data: 'image',
-                name: 'image'
+                data: 'nationality_id',
+                name: 'nationality_id'
             },
             {
                 data: 'title_ar',
@@ -109,14 +109,14 @@
                 searchable: false
             },
         ]
-        showData('{{ route('nationalities.index') }}', columns);
+        showData('{{ route('towns.index') }}', columns);
         // Delete Using Ajax
-        deleteScript('{{ route('nationalities.delete') }}');
+        deleteScript('{{ route('towns.delete') }}');
         // Add Using Ajax
-        showAddModal('{{ route('nationalities.create') }}');
+        showAddModal('{{ route('towns.create') }}');
         addScript();
         // Edit Using Ajax
-        showEditModal('{{ route('nationalities.edit', ':id') }}');
+        showEditModal('{{ route('towns.edit', ':id') }}');
         editScript();
     </script>
 @endsection
