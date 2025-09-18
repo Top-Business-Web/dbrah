@@ -2,7 +2,7 @@
 <html lang="ar">
 
 <head>
-    @include('Admin.auth.css')
+    @include('admin.auth.css')
 </head>
 
 <body class="g-sidenav-show ">
@@ -17,6 +17,6 @@
     <button id="loginButton">تسجيل الدخول</button>
 </form>
 
-@include('Admin.auth.js')
+@include('admin.auth.js')
 </body>
 </html>

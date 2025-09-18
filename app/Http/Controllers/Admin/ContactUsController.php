@@ -30,7 +30,7 @@ class ContactUsController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/contact/index');
+            return view('admin.contact.index');
         }
     }
 

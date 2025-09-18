@@ -25,6 +25,7 @@ class OrderController extends Controller
     use GeneralTrait,NotificationTrait;
     public function storeOrder(Request $request)
     {
+//        dd($request->all());;
         $validator = Validator::make($request->all(), [
             'user_id' => 'nullable|exists:users,id',
         ]);
@@ -65,6 +66,7 @@ class OrderController extends Controller
                 $backResult[] = $value['category_id'];
             }
         }
+        dd($backResult);
 
         if (count($backResult) > 0) {
             return $this->returnData('categories_id', $backResult,'المنتجات التي تم اختيارها غير متوفرة في المتاجر ',408);
@@ -191,7 +193,7 @@ class OrderController extends Controller
     {
         $products = [];
             $details = $data['products_id'];
-            $providersWhoSaleCategories = Provider::whereHas('categories',function($query) use($data){
+                $providersWhoSaleCategories = Provider::whereHas('categories',function($query) use($data){
                 $query->where('category_id',$data['category_id']);
             })->get();
             if (count($providersWhoSaleCategories) == 0) {

@@ -25,7 +25,7 @@ class ClientController extends Controller
         $ended_orders    = $user->orders->where('status','delivered')->count();
         $canceled_orders = $user->orders->where('status','rejected')->count();
 
-        return view('Admin/users/profile',compact('user','average','count','new_orders','offered_orders','current_orders','ended_orders','canceled_orders'));
+        return view('admin.users.profile',compact('user','average','count','new_orders','offered_orders','current_orders','ended_orders','canceled_orders'));
     }
 
     public function index(request $request)
@@ -61,7 +61,7 @@ class ClientController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/users/index');
+            return view('admin.users.index');
         }
     }
 

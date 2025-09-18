@@ -37,7 +37,7 @@ class SuggestionController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/suggestions/index');
+            return view('admin.suggestions.index');
         }
     }
 

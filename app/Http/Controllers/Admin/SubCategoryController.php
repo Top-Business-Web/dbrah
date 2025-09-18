@@ -40,7 +40,7 @@ class SubCategoryController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/subcategory/index');
+            return view('admin.subcategory.index');
         }
     }
 
@@ -49,7 +49,7 @@ class SubCategoryController extends Controller
     public function create()
     {
         $categories = Category::MainCategory()->get();
-        return view('Admin/subcategory.parts.create',compact('categories'));
+        return view('admin.subcategory.parts.create',compact('categories'));
     }
 
 
@@ -95,7 +95,7 @@ class SubCategoryController extends Controller
     {
         $category   = CategorySubCategories::findOrFail($id);
         $categories = Category::MainCategory()->get();
-        return view('Admin/subcategory.parts.edit',compact('categories','category'));
+        return view('admin.subcategory.parts.edit',compact('categories','category'));
     }
 
 

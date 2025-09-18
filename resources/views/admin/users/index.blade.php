@@ -1,4 +1,4 @@
-@extends('Admin/layouts/master')
+@extends('admin.layouts.master')
 @section('title')
     {{($setting->title) ?? ''}} | العملاء
 @endsection
@@ -55,7 +55,7 @@
         </div>
         <!-- MODAL CLOSED -->
     </div>
-    @include('Admin/layouts/myAjaxHelper')
+    @include('admin.layouts.myAjaxHelper')
 @endsection
 @section('ajaxCalls')
     <script>

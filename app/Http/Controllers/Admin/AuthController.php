@@ -14,7 +14,7 @@ class AuthController extends Controller {
         if (Auth::guard('admin')->check()){
             return redirect('admin');
         }
-        return view('Admin.auth.login');
+        return view('admin.auth.login');
     }
 
     public function login(Request $request): \Illuminate\Http\JsonResponse
@@ -23,7 +23,7 @@ class AuthController extends Controller {
         $data = $request->validate([
             'email'   =>'required|exists:admins',
             'password'=>'required'
-        ],[
+         ],[
             'email.exists'      => 'هذا البريد غير مسجل لدينا',
             'email.required'    => 'يرجي ادخال بريد إلكتروني',
             'password.required' => 'يرجي ادخال كلمة مرور',

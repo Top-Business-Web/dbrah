@@ -46,7 +46,7 @@ class ReviewController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/reviews/index');
+            return view('admin.reviews.index');
         }
     }
 

@@ -42,14 +42,14 @@ class DeliveryTimeController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/delivery_time/index');
+            return view('admin.delivery_time.index');
         }
     }
 
 
 
     public function create(){
-        return view('Admin/delivery_time.parts.create');
+        return view('admin.delivery_time.parts.create');
     }
 
     public function store(request $request): \Illuminate\Http\JsonResponse
@@ -87,7 +87,7 @@ class DeliveryTimeController extends Controller
 
 
     public function edit(DeliveryTime $deliveryTime){
-        return view('Admin/delivery_time.parts.edit',compact('deliveryTime'));
+        return view('admin.delivery_time.parts.edit',compact('deliveryTime'));
     }
 
 

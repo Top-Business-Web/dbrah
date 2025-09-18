@@ -40,7 +40,7 @@ class OrderController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/orders/new-orders');
+            return view('admin.orders.new-orders');
         }
     }
 
@@ -78,7 +78,7 @@ class OrderController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/orders/current-orders');
+            return view('admin.orders.current-orders');
         }
     }
 
@@ -111,7 +111,7 @@ class OrderController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/orders/ended-orders');
+            return view('admin.orders.ended-orders');
         }
     }
 }

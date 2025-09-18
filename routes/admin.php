@@ -11,7 +11,7 @@ Route::group(['prefix'=>'admin'],function (){
 
 Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::get('/', function () {
-        return view('Admin/index');
+        return view('admin.index');
     })->name('adminHome');
 
 
@@ -31,6 +31,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
         // Route::get('/', 'SettingsController@index')->name('settings.index');
         Route::resource('deliveryTimes', 'DeliveryTimeController');
         Route::POST('deliveryTimes.delete','DeliveryTimeController@delete')->name('deliveryTimes.delete');
+        Route::resource('nationalities', 'NationalityController');
+        Route::POST('nationalities.delete','DeliveryTimeController@delete')->name('nationalities.delete');
         // Route::post('delete', 'SettingsController@delete')->name('delete_settings');
     });
 
