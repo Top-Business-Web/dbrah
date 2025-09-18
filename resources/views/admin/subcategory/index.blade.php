@@ -1,4 +1,4 @@
-@extends('Admin/layouts/master')
+@extends('admin.layouts.master')
 @section('title')
     {{($setting->title) ?? ''}} | التصنيفات الفرعية
 @endsection
@@ -80,7 +80,7 @@
         </div>
         <!-- Edit MODAL CLOSED -->
     </div>
-    @include('Admin/layouts/myAjaxHelper')
+    @include('admin.layouts.myAjaxHelper')
 @endsection
 @section('ajaxCalls')
     <script>

@@ -48,7 +48,7 @@ class SlidersController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/sliders/index');
+            return view('admin.sliders.index');
         }
     }
 
@@ -59,7 +59,7 @@ class SlidersController extends Controller
      */
     public function create(){
         $products = Product::select('id','title_ar')->get();
-        return view('Admin/sliders.parts.create',compact('products'));
+        return view('admin.sliders.parts.create',compact('products'));
     }
 
     public function store(request $request)
@@ -85,7 +85,7 @@ class SlidersController extends Controller
 
     public function edit(Slider $slider){
         $products = Product::select('id','title_ar')->get();
-        return view('Admin/sliders.parts.edit',compact('slider','products'));
+        return view('admin.sliders.parts.edit',compact('slider','products'));
     }
 
 

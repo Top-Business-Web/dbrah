@@ -1,4 +1,4 @@
-@extends('Admin/layouts/master')
+@extends('admin.layouts.master')
 
 @section('title')  {{($setting->title) ?? ''}} | الصور المتحركة @endsection
 @section('page_name') الصور المتحركة @endsection
@@ -81,7 +81,7 @@
         </div>
         <!-- Edit MODAL CLOSED -->
     </div>
-    @include('Admin/layouts/myAjaxHelper')
+    @include('admin.layouts.myAjaxHelper')
 @endsection
 @section('ajaxCalls')
     <script>

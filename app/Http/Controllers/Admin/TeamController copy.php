@@ -44,14 +44,14 @@ class TeamController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/teams/index');
+//            return view('admin.teams.index');
         }
     }
 
 
 
     public function create(){
-        return view('Admin/teams.parts.create');
+//        return view('admin.teams.parts.create');
     }
 
     public function store(request $request): \Illuminate\Http\JsonResponse
@@ -87,7 +87,7 @@ class TeamController extends Controller
 
 
     public function edit(Team $team){
-        return view('Admin/teams.parts.edit',compact('team'));
+        return view('admin.teams.parts.edit',compact('team'));
     }
 
 

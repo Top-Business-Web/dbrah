@@ -150,13 +150,13 @@
   ),
   'yoeunes/toastr' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    ),
     'aliases' => 
     array (
       'Toastr' => 'Yoeunes\\Toastr\\Facades\\Toastr',
+    ),
+    'providers' => 
+    array (
+      0 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
     ),
   ),
 );

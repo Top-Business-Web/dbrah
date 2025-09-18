@@ -53,14 +53,14 @@ class ProductController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/product/index');
+            return view('admin.product.index');
         }
     }
 
     public function showProductImages($product_id){
         $images = ProductImages::where('product_id',$product_id)->latest()->get();
         $product= Product::findOrFail($product_id);
-        return view('Admin/product/images',compact('images','product'));
+        return view('admin.product.index',compact('images','product'));
     }
 
     public function deleteProductImage(request $request){
@@ -96,7 +96,7 @@ class ProductController extends Controller
     public function create()
     {
         $mainCategories = Category::mainCategory()->whereHas('subCategory')->with('subCategory.subCategory')->latest()->get();
-        return view('Admin/product/parts/create',compact('mainCategories'));
+        return view('admin.product.parts.create',compact('mainCategories'));
     }
 
 
@@ -129,7 +129,7 @@ class ProductController extends Controller
         $mainCategories = Category::mainCategory()->whereHas('subCategory')->with('subCategory.subCategory')->latest()->get();
         $subcategories  = CategorySubCategories::where('category_id',$product->category_id)->pluck('sub_category_id');
         $categories     = Category::whereIn('id',$subcategories)->get();
-        return view('Admin/product/parts/edit',compact('product','mainCategories','subcategories','categories'));
+        return view('admin.product.parts.edit',compact('product','mainCategories','subcategories','categories'));
     }
 
 

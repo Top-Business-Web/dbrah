@@ -34,14 +34,14 @@ class CategoryController extends Controller
                 ->escapeColumns([])
                 ->make(true);
         }else{
-            return view('Admin/category/index');
+            return view('admin.category.index');
         }
     }
 
 
     public function create()
     {
-        return view('Admin/category.parts.create');
+        return view('admin.category.parts.create');
     }
 
 
@@ -75,7 +75,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('Admin/category.parts.edit',compact('category'));
+        return view('admin.category.parts.edit',compact('category'));
     }
 
 
